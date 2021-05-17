@@ -1,0 +1,59 @@
+<header class="header">
+  <div class="container">
+    <div class="header__body">
+
+      <div class="header__body-nav">
+        <div [className]="isBurgerClicked ? 'header__burger active' : 'header__burger'" (click)="clickBurger()">
+          <span></span>
+        </div>
+        <a [routerLink]="['','home']" class="header__logo">LOGO</a>
+        <nav [className]="isBurgerClicked?'header__menu active':'header__menu'">
+          <ul [className]="isBurgerClicked?'header__list active': 'header__list'">
+            <li class="header__list-li">МЕНЮ</li>
+            <li routerLinkActive="active">
+              <a class="header__link" (click)="goToPage('main')" >Главная</a>
+            </li>
+
+            <li routerLinkActive="active">
+              <a class="header__link" (click)="goToPage('broadcast')" >Контроль</a>
+            </li>
+
+            <li routerLinkActive="active">
+              <a class="header__link" (click)="goToPage('price-list-page')" >Прайс-лист</a>
+            </li>
+
+            <li routerLinkActive="active">
+              <a class="header__link" (click)="goToPage('staff-page')">Персонал</a>
+            </li>
+            <li><a class="header__link" href="#">Настройки</a></li>
+            <li routerLinkActive="active">
+            <a class="header__link" (click)="goToPage('payments-page')" >Платежи</a>
+            </li>
+            <li routerLinkActive="active">
+              <a class="header__link" (click)="goToPage('reviews-page')">Отзывы</a>
+            </li>
+            <li routerLinkActive="active">
+              <a class="header__link" (click)="goToPage('clients-page')">Клиенты</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div *ngIf="!isAuthenticated()"  class="header__body-prof">
+        <input class="header__body-search" type="search">
+        <a class="header__link" [routerLink]="['','login']" routerLinkActive="active">Войти</a>
+      </div>
+
+      <div *ngIf="isAuthenticated()" class="header__body-prof">
+        <a (click)="logout()"  class="header__link" [routerLink]="['','login']" routerLinkActive="active">Выйти</a>
+      </div>
+
+      <div class="header__body-img">
+        <img src="../../../../../assets/pics/Search.svg" style="margin-right: 10px;">
+        <a *ngIf="!isAuthenticated()" [routerLink]="['','login']"><img src="../../../../../assets/pics/profile.svg"></a>
+        <a (click)="logout()" *ngIf="isAuthenticated()" [routerLink]="['','login']"><img src="../../../../../assets/pics/logout_icon_151219.svg"></a>
+      </div>
+
+    </div>
+  </div>
+</header>

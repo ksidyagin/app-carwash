@@ -1,0 +1,13 @@
+<section class="main">
+  <div class="container">
+    <h3 class="text__main">Персонал</h3>
+
+  <div class="personal">
+      <a [routerLink]="['','managers',carwash.id]" routerLinkActive="active">Управляющие</a>
+    <hr class="admins_hr">
+      <a [routerLink]="['','admins',carwash.id]" routerLinkActive="active">Администраторы</a>
+    <hr class="admins_hr">
+      <a [routerLink]="['','executors',carwash.id]" routerLinkActive="active">Исполнители</a>
+  </div>
+  </div>
+</section>

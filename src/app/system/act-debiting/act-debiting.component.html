@@ -1,0 +1,79 @@
+<section class="main">
+  <form [formGroup]="actForm" (ngSubmit)="createAct()" class="container">
+    <h3 class="text__main">Акт списания</h3>
+    <div class="act__point">
+      <div class="act__point-top">
+        <p class="act__point-title">Списать со склада</p>
+        <img src="../../images/add.svg" alt="">
+      </div>
+      <div class="spoiler__btn">
+        <select formControlName="warehouse_deleted">
+          <option *ngFor="let whouse of warehouses" [ngValue]="whouse">
+            {{whouse.name}}
+          </option>
+        </select>
+      </div>
+      
+    </div>
+    <div class="act__point">
+      <div class="act__point-top">
+        <p class="act__point-title">Комментарий</p>
+      </div>
+      <div class="act__point-bottom">
+        <p class="receipt__point-text">
+          <input style="width:250px; border: none;" type="text" 
+          formControlName="comment"  placeholder="Комментарий...">
+        </p>
+      </div>
+    </div>
+    <div class="act__point">
+      <div class="act__point-top">
+        <p class="act__point-title">Имя товара</p>
+      </div>
+      <div class="act__point-bottom">
+        <p class="receipt__point-text">
+          <input style="width:250px; border: none;" type="text" 
+          formControlName="name_product"  placeholder="Введите...">
+        </p>
+      </div>
+    </div>
+
+    <div class="act__point">
+      <div class="receipt__point-top">
+        <p class="receipt__point-title">Дата</p>
+      </div>
+      <div class="spoiler__btn">
+        <input style="width:250px; border: none;" type="date" formControlName="date" >
+      </div>
+      
+    </div>
+
+    <div class="act__point">
+      <div class="act__point-top">
+        <p class="act__point-title">Фасовка</p>
+      </div>
+      <div class="spoiler__btn">
+        <p class="receipt__point-text">
+          <input style="width:250px; border: none;" type="text" 
+          formControlName="packaging"  placeholder="Фасовка...">
+        </p>
+      </div>
+     
+    </div>
+    <div class="act__point">
+      <div class="act__point-top">
+        <p class="act__point-title">Кол-во</p>
+      </div>
+      <div class="act__point-bottom">
+        <p class="receipt__point-text">
+          <input style="width:250px; border: none;" type="text" 
+          formControlName="count"  placeholder="Кол-во...">
+        </p>
+      </div>
+    </div>
+    <div class="act__btns">
+      <button class="btn-sbm" [disabled]="actForm.invalid"  type="submit">Провести</button>
+      <a class="btn-cnl" [routerLink]="['','warehouse',carwash.id,'leftovers']" routerLinkActive="active">Назад</a>
+    </div>
+  </form>
+</section>

@@ -1,0 +1,84 @@
+<section class="main">
+  <form [formGroup]="displacementForm" (ngSubmit)="createDisplacement()" class="container">
+    <h3 class="text__main">Внутреннее перемещение</h3>
+    <div class="displacement__point">
+      <div class="displacement__point-top">
+        <p class="displacement__point-title">Списать со склада</p>
+        <img src="../../images/add.svg" alt="">
+      </div>
+      <div class="spoiler__btn">
+        <select formControlName="warehouse_deleted">
+          <option *ngFor="let whouse of warehouses" [ngValue]="whouse">
+            {{whouse.name}}
+          </option>
+        </select>
+      </div>
+      
+    </div>
+
+    <div class="displacement__point">
+      <div class="displacement__point-top">
+        <p class="displacement__point-title">Оприходовать склад</p>
+        <img src="../../images/add.svg" alt="">
+      </div>
+      <div class="spoiler__btn">
+        <select formControlName="warehouse_added">
+          <option *ngFor="let whouse of warehouses" [ngValue]="whouse">
+            {{whouse.name}}
+          </option>
+        </select>
+      </div>
+      
+    </div>
+
+    <div class="displacement__point">
+      <div class="displacement__point-top">
+        <p class="displacement__point-title">Комментарий</p>
+      </div>
+      <div class="displacement__point-bottom">
+        <p class="displacement__point-text">
+          <input style="width:250px; border: none;" formControlName="comment" type="text" placeholder="Комментарий к документу">
+        </p>
+      </div>
+    </div>
+    <div class="displacement__point">
+      <div class="displacement__point-top">
+        <p class="displacement__point-title">Имя товара</p>
+      </div>
+      <div class="displacement__point-bottom">
+        <p class="displacement__point-text">
+          <input style="width:250px; border: none;" type="text" formControlName="name_product" class="receipt__point-text" placeholder="Введите...">
+
+        </p>
+      </div>
+    </div>
+
+    <div class="displacement__point">
+      <div class="displacement__point-top">
+        <p class="displacement__point-title">Фасовка</p>
+      </div>
+      <div class="spoiler__btn">
+        <p class="displacement__point-text top-text">
+          <input style="width:250px; border: none;" type="text" formControlName="packaging" class="receipt__point-text" placeholder="Введите...">
+        </p>
+      </div>
+      
+    </div>
+
+    <div class="displacement__point">
+      <div class="displacement__point-top">
+        <p class="displacement__point-title">Кол-во</p>
+      </div>
+      <div class="displacement__point-bottom">
+        <p class="displacement__point-text">
+          <input style="width:250px; border: none;" type="text" formControlName="count" class="receipt__point-text" placeholder="0">
+        </p>
+      </div>
+    </div>
+
+    <div class="receipt__btns">
+      <button class="btn-sbm" [disabled]="displacementForm.invalid"  type="submit">Провести</button>
+      <a class="btn-cnl" [routerLink]="['','warehouse',carwash.id,'leftovers']" routerLinkActive="active">Назад</a>
+    </div>
+  </form>
+</section>

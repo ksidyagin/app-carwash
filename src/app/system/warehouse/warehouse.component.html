@@ -1,0 +1,44 @@
+<section class="main lock-padding">
+  <div class="container">
+    <h4 class="text__main">Склад</h4>
+    <div class="storage">
+      <div class="price__links">
+        <a class="price__link" [routerLink]="['','price-list-page', this.carwash.id]" routerLinkActive="active">Прайс-лист</a>
+        <a class="price__link" [routerLink]="['','nomenclature', this.carwash.id]" routerLinkActive="active">Номенклатура</a>
+        <a class="price__link-active" [routerLink]="['','warehouse', this.carwash.id,'leftovers']" routerLinkActive="active">Склад</a>
+        <a class="price__link" [routerLink]="['','analytics', this.carwash.id]" routerLinkActive="active">Аналитика</a>
+      </div>
+      <div class="storage__inner">
+
+        <div class="price__links" style="margin-bottom: 12px;">
+          <a class="storage__link" [routerLink]="['leftovers']" routerLinkActive="active">Остатки</a>
+          <a class="storage__link " [routerLink]="['documents']" routerLinkActive="active">Документы</a>
+          <a  class="storage__link " [routerLink]="['directory']" routerLinkActive="active">Справочник</a>
+        </div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <a  class="popup__link">
+      <div (click)="openServiceForm()" class="storage-btn">Создать документ</div>
+      <div  *ngIf="serviceFormIsOpen" class="popup lock-padding">
+        <div class="container">
+          <div class="popup__content">
+            <h3 class="text__main">Создать документ</h3>
+            <h4 class="subText">Пожалуйста, выберите какой документ хотите создать</h4>
+            <div class="add__docs-links">
+              <a  class="add__docs-link" [routerLink]="['','receipt-invoice', this.carwash.id]" routerLinkActive="active">Приходная накладная</a>
+              <hr>
+              <a  class="add__docs-link" [routerLink]="['','act-debiting', this.carwash.id]" routerLinkActive="active">Акт списания</a>
+              <hr>
+              <a  class="add__docs-link" [routerLink]="['','moving', this.carwash.id]" routerLinkActive="active">Внутреннее перемещение</a>
+            </div>
+            <div class="popup__btns">
+              <a href="#" class="btn-sbm">Сохранить</a>
+              <a (click)="closeServiceForm()" class="btn-cnl close-popup">Отменить</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>

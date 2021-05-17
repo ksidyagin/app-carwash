@@ -1,0 +1,31 @@
+<div *ngFor="let category of categories let index=index; trackBy: trackCategory;" class="guide table__item" id="guide">
+    <div class="guide__top">
+      <p class="guide__top-title">{{category.name}}</p>
+      <div class="guide__top-img">
+        <img *ngIf="!this.settingsIsActive" (click)="openSettings()" class="img-set" src="../../../../../../assets/pics/settings.svg">
+        <img *ngIf="this.settingsIsActive" (click)="openSettings()" class="img-set-accept" src="../../../../../../assets/pics/Accept.svg">
+      </div>
+    </div>
+    <div *ngFor="let warehouse of category.warehouses" class="guide__info">
+      <p>{{warehouse.name}}</p>
+      <img *ngIf="this.settingsIsActive" (click)="removeWarehouse(warehouse.id)"  src="./../../../../../assets/pics/RemoveItem.svg">
+
+    </div>
+    <a (click)="openServiceForm(category)" class="guide__btn popup__link">Добавить склад</a>
+    <div *ngIf="serviceFormIsOpen" class="popup lock-padding">
+      <div class="container">
+          <form [formGroup]="serviceForm" (ngSubmit)="createService()" class="popup__content">
+              <h4 class="text__main">Добавить склад</h4>
+              <h6 class="subText">Пожалуйста, введите название склада</h6>
+              <input formControlName="name" class="text-input" type="text" placeholder="Введите значение...">
+              
+              <div class="popup__btns">
+                <button class="btn-sbm" [disabled]="serviceForm.invalid" type="submit" >Сохранить</button>
+                  <a (click)="closeServiceForm()" class="btn-cnl close-popup">Отменить</a>
+              </div>
+            </form>
+      </div>
+  </div>
+  </div>
+
+

@@ -1,0 +1,24 @@
+<section class="main">
+  <div class="container">
+    <h3 class="text__main">Аналитика</h3>
+    <div class="analytics">
+      <div class="price__links">
+        <a class="price__link" [routerLink]="['','price-list-page', carwash.id]" routerLinkActive="active">Прайс-лист</a>
+        <a class="price__link" [routerLink]="['','nomenclature', carwash.id]" routerLinkActive="active">Номенклатура</a>
+        <a class="price__link" [routerLink]="['','warehouse','leftovers',carwash.id]" routerLinkActive="active">Склад</a>
+        <a class="price__link-active" [routerLink]="['','analytics', carwash.id]" routerLinkActive="active">Аналитика</a>
+      </div>
+      <div class="analytics__inner">
+        <div class="price__links" style="margin-bottom: 12px;">
+          <a class="analytics__link link__tab" [routerLink]="['','analytics',carwash.id,'carwash']" routerLinkActive="active">Автомойка</a>
+          <a class="analytics__link link__tab" [routerLink]="['','analytics',carwash.id,'tireservice']" routerLinkActive="active">Шиномонтаж</a>
+          <a class="analytics__link link__tab" [routerLink]="['','analytics',carwash.id,'daling']" routerLinkActive="active">Детейлинг</a>
+          <a class="analytics__link link__tab" [routerLink]="['','analytics',carwash.id,'cafe']" routerLinkActive="active">Кафе</a>
+        </div>
+        <div class="analytics-btn">Выбрать период</div>
+        <router-outlet></router-outlet>
+    </div>
+
+    </div>
+  </div>
+</section>

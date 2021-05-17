@@ -1,0 +1,38 @@
+<div class="docs table__item" >
+  <div class="docs__table">
+    <div class="docs__table-top">
+      <p>Дата и время</p>
+      <p>Тип документа</p>
+      <p>Номер документа</p>
+      <p>Проведен</p>
+    </div>
+
+    <div *ngFor="let act of actsOfDebiting">
+      <div class="docs__table-cont">
+        <p>{{act.date | date}}</p>
+        <p>Акт списания</p>
+        <p>{{act.id}}</p>
+        <p>{{act.date_event | date}}</p>
+      </div>
+    </div>
+    
+    <div *ngFor="let act of receiptInvoices">
+      <div class="docs__table-cont">
+        <p>{{act.date | date}}</p>
+        <p>Приходная накладная</p>
+        <p>{{act.id}}</p>
+        <p>{{act.date_receipt | date}}</p>
+      </div>
+    </div>
+
+    <div *ngFor="let act of internalDisplacements">
+      <div class="docs__table-cont">
+        <p>{{act.date | date}}</p>
+        <p>Внутреннее перемещение</p>
+        <p>{{act.id}}</p>
+        <p>{{act.date_receipt | date}}</p>
+      </div>
+    </div>
+
+  </div>
+</div>

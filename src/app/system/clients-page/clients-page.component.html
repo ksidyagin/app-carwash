@@ -1,0 +1,357 @@
+<section class="main lock-padding">
+  <div class="container">
+    <h3 class="text__main">Клиенты</h3>
+    <div class="clients__links">
+      <a class="clients__links-item link__tab" [routerLink]="['','clients-page', carwash.id]" routerLinkActive="active">Список клиентов</a>
+      <a class="clients__links-item link__tab" [routerLink]="['','history-sms',  carwash.id]" routerLinkActive="active">История SMS-рассылок</a>
+    </div>
+
+    <div id="list" class="client__list table__item">
+      <div class="client__list-info">
+        <div class="client__list-info__inner">
+          <p class="client__list-info-title">Автомойка  "{{carwash.name}}"</p>
+          <!-- <div class="client__list-info-img">
+            <a href="#clients__filter" class="popup__link">
+              <img class="img-filter" src="../../../../../../assets/pics/Filter.svg">
+            </a>
+            <a href="#clients__add" class="popup__link">
+              <img class="img-add" src="../../../../../../assets/pics/Add.svg">
+            </a>
+          </div> -->
+        </div>
+        <div class="client__list-table-top">
+          <p>№</p>
+          <p>Гос. номер</p>
+          <p>Аккаунт</p>
+          <p>Имя / Телефон</p>
+          <p>Комментарий</p>
+          <p style="padding-top: 4px;">Кол-во визитов</p>
+          <p>Первый визит</p>
+          <p style="padding-top: 4px;">Последний визит</p>
+          <p>Общая сумма</p>
+          <p>Средний чек</p>
+        </div>
+        <div *ngFor="let client of clients; let i=index">
+          <div class="client__list-table-cont">
+            <p>{{i+1}}</p>
+            <p style="padding-top: 4px;">
+              <img src="../../../../../../assets/pics/reg-number.svg" alt="">
+              <span class="client__list-span">Скидка
+                              <span class="client__list-span client__list-span_sale">0</span>
+                          </span>
+            </p>
+            <p>Аккаунт</p>
+            <p>{{client.name}}</p>
+            <p>{{client.description}}</p>
+            <p style="padding-top: 4px;">{{client.visits}}</p>
+            <p>{{client.first_visit}}</p>
+            <p style="padding-top: 4px;">{{client.last_visit}}</p>
+            <p>{{client.total_amount}}</p>
+            <p>{{client.average_check}}</p>
+          </div>
+        </div>
+        <!-- <p class="client__list-info_count">Найдено 6119 клиентов</p> -->
+      </div>
+
+      <!-- <div *ngFor="let client of clients; let index=index;" class="client__list-table tab__item-pages" >
+        <div class="client__list-table-top">
+          <p>№</p>
+          <p>Гос. номер</p>
+          <p>Аккаунт</p>
+          <p>Имя / Телефон</p>
+          <p>Комментарий</p>
+          <p style="padding-top: 4px;">Кол-во визитов</p>
+          <p>Первый визит</p>
+          <p style="padding-top: 4px;">Последний визит</p>
+          <p>Общая сумма</p>
+          <p>Средний чек</p>
+        </div>
+        <div class="client__list-table-cont">
+          <p>1</p>
+          <p style="padding-top: 4px;">
+            <img src="../../../../../../assets/pics/reg-number.svg" alt="">
+            <span class="client__list-span">Скидка
+                            <span class="client__list-span client__list-span_sale">0</span>
+                        </span>
+          </p>
+          <p>{{clients.cars}}</p>
+          <p>Аккаунт</p>
+          <p>{{client.name}}</p>
+          <p>{{client.description}}</p>
+          <p style="padding-top: 4px;">{{client.visits}}</p>
+          <p>{{client.first_visit}}</p>
+          <p style="padding-top: 4px;">{{client.last_visit}}</p>
+          <p>Общая сумма</p>
+          <p>{{client.average_check}}</p>
+  
+        </div>
+      </div> -->
+      <!-- <div id="table1" >
+        <div class="client__list-table-top">
+          <p>№</p>
+          <p>Гос. номер</p>
+          <p>Аккаунт</p>
+          <p>Имя / Телефон</p>
+          <p>Комментарий</p>
+          <p style="padding-top: 4px;">Кол-во визитов</p>
+          <p>Первый визит</p>
+          <p style="padding-top: 4px;">Последний визит</p>
+          <p>Общая сумма</p>
+          <p>Средний чек</p>
+        </div>
+        <div class="client__list-table-cont">
+          <p>1</p>
+          <p style="padding-top: 4px;">
+            <img src="../../../../../../assets/pics/reg-number.svg" alt="">
+            <span class="client__list-span">Скидка
+                            <span class="client__list-span client__list-span_sale">0</span>
+                        </span>
+          </p>
+          <p>K781MP77</p>
+          <p style="padding-top: 4px;">Александр 89202634978</p>
+          <p>спецмост</p>
+          <p>183</p>
+          <p>23.04.2017</p>
+          <p>27.04.2020</p>
+          <p>43 500,00₽</p>
+          <p>263,64₽</p>
+        </div>
+        <hr>
+        <div class="client__list-table-cont">
+          <p>2</p>
+          <p style="padding-top: 4px;">
+            <img src="../../../../../../assets/pics/reg-number.svg" alt="">
+            <span class="client__list-span">Скидка
+                            <span class="client__list-span client__list-span_sale">0</span>
+                        </span>
+          </p>
+          <p>K781MP77</p>
+          <p style="padding-top: 4px;">Александр 89202634978</p>
+          <p>спецмост</p>
+          <p>183</p>
+          <p>23.04.2017</p>
+          <p>27.04.2020</p>
+          <p>43 500,00₽</p>
+          <p>263,64₽</p>
+        </div>
+        <hr>
+        <div class="client__list-table-cont">
+          <p>3</p>
+          <p style="padding-top: 4px;">
+            <img src="../../../../../../assets/pics/reg-number.svg" alt="">
+            <span class="client__list-span">Скидка
+                            <span class="client__list-span client__list-span_sale">0</span>
+                        </span>
+          </p>
+          <p>K781MP77</p>
+          <p style="padding-top: 4px;">Александр 89202634978</p>
+          <p>спецмост</p>
+          <p>183</p>
+          <p>23.04.2017</p>
+          <p>27.04.2020</p>
+          <p>43 500,00₽</p>
+          <p>263,64₽</p>
+        </div>
+        <hr>
+        <div class="client__list-table-cont">
+          <p>4</p>
+          <p style="padding-top: 4px;">
+            <img src="../../../../../../assets/pics/reg-number.svg" alt="">
+            <span class="client__list-span">Скидка
+                            <span class="client__list-span client__list-span_sale">0</span>
+                        </span>
+          </p>
+          <p>K781MP77</p>
+          <p style="padding-top: 4px;">Александр 89202634978</p>
+          <p>спецмост</p>
+          <p>183</p>
+          <p>23.04.2017</p>
+          <p>27.04.2020</p>
+          <p>43 500,00₽</p>
+          <p>263,64₽</p>
+        </div>
+        <hr>
+        <div class="client__list-table-cont">
+          <p>5</p>
+          <p style="padding-top: 4px;">
+            <img src="../../../../../../assets/pics/reg-number.svg" alt="">
+            <span class="client__list-span">Скидка
+                            <span class="client__list-span client__list-span_sale">0</span>
+                        </span>
+          </p>
+          <p>K781MP77</p>
+          <p style="padding-top: 4px;">Александр 89202634978</p>
+          <p>спецмост</p>
+          <p>183</p>
+          <p>23.04.2017</p>
+          <p>27.04.2020</p>
+          <p>43 500,00₽</p>
+          <p>263,64₽</p>
+        </div>
+        <hr>
+        <div class="client__list-table-cont">
+          <p>6</p>
+          <p style="padding-top: 4px;">
+            <img src="../../../../../../assets/pics/reg-number.svg" alt="">
+            <span class="client__list-span">Скидка
+                            <span class="client__list-span client__list-span_sale">0</span>
+                        </span>
+          </p>
+          <p>K781MP77</p>
+          <p style="padding-top: 4px;">Александр 89202634978</p>
+          <p>спецмост</p>
+          <p>183</p>
+          <p>23.04.2017</p>
+          <p>27.04.2020</p>
+          <p>43 500,00₽</p>
+          <p>263,64₽</p>
+        </div>
+        <hr>
+        <div class="client__list-table-cont">
+          <p>7</p>
+          <p style="padding-top: 4px;">
+            <img src="../../../../../../assets/pics/reg-number.svg" alt="">
+            <span class="client__list-span">Скидка
+                            <span class="client__list-span client__list-span_sale">0</span>
+                        </span>
+          </p>
+          <p>K781MP77</p>
+          <p style="padding-top: 4px;">Александр 89202634978</p>
+          <p>спецмост</p>
+          <p>183</p>
+          <p>23.04.2017</p>
+          <p>27.04.2020</p>
+          <p>43 500,00₽</p>
+          <p>263,64₽</p>
+        </div>
+        <hr>
+        <div class="client__list-table-cont">
+          <p>8</p>
+          <p style="padding-top: 4px;">
+            <img src="../../../../../../assets/pics/reg-number.svg" alt="">
+            <span class="client__list-span">Скидка
+                            <span class="client__list-span client__list-span_sale">0</span>
+                        </span>
+          </p>
+          <p>K781MP77</p>
+          <p style="padding-top: 4px;">Александр 89202634978</p>
+          <p>спецмост</p>
+          <p>183</p>
+          <p>23.04.2017</p>
+          <p>27.04.2020</p>
+          <p>43 500,00₽</p>
+          <p>263,64₽</p>
+        </div>
+      </div>
+
+      <div id="table2" class="client__list-table tab__item-pages">
+        <div class="client__list-table-top">
+          <p>№</p>
+          <p>Гос. номер</p>
+          <p>Аккаунт</p>
+          <p>Имя / Телефон</p>
+          <p>Комментарий</p>
+          <p style="padding-top: 4px;">Кол-во визитов</p>
+          <p>Первый визит</p>
+          <p style="padding-top: 4px;">Последний визит</p>
+          <p>Общая сумма</p>
+          <p>Средний чек</p>
+        </div>
+        <div class="client__list-table-cont">
+          <p>1</p>
+          <p style="padding-top: 4px;">
+            <img src="../../../../../../assets/pics/reg-number.svg" alt="">
+            <span class="client__list-span">Скидка
+                            <span class="client__list-span client__list-span_sale">0</span>
+                        </span>
+          </p>
+          <p>K781MP77</p>
+          <p style="padding-top: 4px;">Александр 89202634978</p>
+          <p>спецмост</p>
+          <p>183</p>
+          <p>23.04.2017</p>
+          <p>27.04.2020</p>
+          <p>43 500,00₽</p>
+          <p>263,64₽</p>
+        </div>
+        <hr>
+        <div class="client__list-table-cont">
+          <p>2</p>
+          <p style="padding-top: 4px;">
+            <img src="../../../../../../assets/pics/reg-number.svg" alt="">
+            <span class="client__list-span">Скидка
+                            <span class="client__list-span client__list-span_sale">0</span>
+                        </span>
+          </p>
+          <p>K781MP77</p>
+          <p style="padding-top: 4px;">Александр 89202634978</p>
+          <p>спецмост</p>
+          <p>183</p>
+          <p>23.04.2017</p>
+          <p>27.04.2020</p>
+          <p>43 500,00₽</p>
+          <p>263,64₽</p>
+        </div>
+        <hr>
+        <div class="client__list-table-cont">
+          <p>3</p>
+          <p style="padding-top: 4px;">
+            <img src="../../../../../../assets/pics/reg-number.svg" alt="">
+            <span class="client__list-span">Скидка
+                            <span class="client__list-span client__list-span_sale">0</span>
+                        </span>
+          </p>
+          <p>K781MP77</p>
+          <p style="padding-top: 4px;">Александр 89202634978</p>
+          <p>спецмост</p>
+          <p>183</p>
+          <p>23.04.2017</p>
+          <p>27.04.2020</p>
+          <p>43 500,00₽</p>
+          <p>263,64₽</p>
+        </div>
+      </div>
+
+      <div id="table3" class="client__list-table tab__item-pages">
+        <div class="client__list-table-top">
+          <p>№</p>
+          <p>Гос. номер</p>
+          <p>Аккаунт</p>
+          <p>Имя / Телефон</p>
+          <p>Комментарий</p>
+          <p style="padding-top: 4px;">Кол-во визитов</p>
+          <p>Первый визит</p>
+          <p style="padding-top: 4px;">Последний визит</p>
+          <p>Общая сумма</p>
+          <p>Средний чек</p>
+        </div>
+        <div class="client__list-table-cont">
+          <p>1</p>
+          <p style="padding-top: 4px;">
+            <img src="../../../../../../assets/pics/reg-number.svg" alt="">
+            <span class="client__list-span">Скидка
+                            <span class="client__list-span client__list-span_sale">0</span>
+                        </span>
+          </p>
+          <p>K781MP77</p>
+          <p style="padding-top: 4px;">Александр 89202634978</p>
+          <p>спецмост</p>
+          <p>183</p>
+          <p>23.04.2017</p>
+          <p>27.04.2020</p>
+          <p>43 500,00₽</p>
+          <p>263,64₽</p>
+        </div>
+      </div>
+
+      <div class="client__list-tabs">
+        <a href="#table1" class="client__list-link link__tab-pages">1</a>
+        <a href="#table2" class="client__list-link link__tab-pages">2</a>
+        <a href="#table3" class="client__list-link link__tab-pages">3</a>
+      </div>
+      <a href="#clients__add-sms" class="popup__link">
+        <div class="client__list-btn">Создать SMS-рассылку</div>
+      </a> -->
+    </div>
+  </div> 
+</section>

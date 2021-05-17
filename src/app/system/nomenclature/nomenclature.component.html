@@ -1,0 +1,68 @@
+    <section class="main lock-padding">
+      <div class="container">
+        <h4 class="text__main">Номенклатура</h4>
+        <div class="nomenklatura">
+          <div class="price__links">
+            <a class="price__link" [routerLink]="['','price-list-page', carwash.id]" routerLinkActive="active">Прайс-лист</a>
+            <a class="price__link-active" [routerLink]="['','nomenclature', carwash.id]" routerLinkActive="active">Номенклатура</a>
+            <a class="price__link" [routerLink]="['','warehouse', carwash.id,'leftovers']" routerLinkActive="active">Склад</a>
+            <a class="price__link" [routerLink]="['','analytics', carwash.id]" routerLinkActive="active">Аналитика</a>
+          </div>
+
+          <div class="nav-bar" style="margin-bottom: 20px;">
+            <a href="#" class="nav-bar__link-active">Услуги</a>
+            <a href="#" class="nav-bar__link">Товары</a>
+            <a href="#" class="nav-bar__link">Продукция</a>
+            <a href="#" class="nav-bar__link">Запасы</a>
+          </div>
+
+          <div class="input">
+            <input type="text" class="search" placeholder="Поиск номенклатуры...">
+          </div>
+
+          <div class="choose-search">
+            <a (click)="openCategoryForm()" class="choose-search-btn popup__link">Добавить категорию</a>
+            <div *ngIf="categoryFormIsOpen" class="popup lock-padding">
+              <div class="container">
+                  <form [formGroup]="categoryForm" (ngSubmit)="createCategory()" class="popup__content">
+                      <h4 class="text__main">Добавить категорию услуг</h4>
+                      <h5 class="subText">Пожалуйста, введите название категории</h5>
+                      <input formControlName="name" class="text-input" type="text" placeholder="Введите значение...">
+                      <p style="color: red;" *ngIf="categoryForm.get('name').errors && categoryForm.get('name').touched">
+                      Данное поле обязательно!
+                      </p>
+                      <div class="popup__btns">
+                          <button class="btn-sbm" [disabled]="categoryForm.invalid" type="submit" >Сохранить</button>
+                          <a (click)="closeCategoryForm()" class="btn-cnl close-popup">Отменить</a>
+                      </div>
+                    </form>
+              </div>
+          </div>
+            <a class="choose-search-btn popup__link">Добавить номенклатуру</a>
+          </div>
+          <div class="explorer">
+            <div class="explorer-item">
+              <img src="../../../../assets/pics/folder.svg">
+              <p>Автомойка</p>
+            </div>
+            <hr class="explorer-hr">
+            <div *ngFor="let category of categories">
+              <div class="explorer-item">
+                <img src="../../../../assets/pics/folder.svg">
+                <p>{{category.name}}</p>
+              </div>
+              <div *ngFor="let service of category.services">
+                <hr class="explorer-hr">
+                <div class="explorer-item">
+                  <img src="../../../../assets/pics/file.svg">
+                  <p>{{service.description}}</p>
+                </div>
+              </div>
+              <hr class="explorer-hr">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+

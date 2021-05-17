@@ -1,0 +1,69 @@
+<section class="main">
+    <div class="container">
+        <h4 class="text__main">Автомойка рядом</h4>
+        <app-ol-map class="map"
+        >
+        </app-ol-map>
+        <div class="order">
+            <p>Решили помыть машину?</p>
+            <a>
+                <div class="order-btn">
+                    Создать заказ
+                </div>
+            </a>
+        </div>
+
+    <div class="news">
+        <h4 class="text__main">Новости</h4>
+<!--        <div *ngFor="let new of news">-->
+<!--            <div class="news_item">-->
+<!--                <img [src]="new.pic" width="80px" height="80px">-->
+<!--                <p>{{new.title}}</p>-->
+<!--            </div>-->
+<!--            <hr class="hr-main">-->
+<!--        </div>-->
+
+      <div class="news_item">
+
+        <img src="./../../../assets/pics/news_cafe.svg">
+        <p>Открытие нового кафе</p>
+      </div>
+      <hr class="hr-main">
+      <div class="news_item">
+        <img src="./../../../assets/pics/news_carwash.svg">
+        <p>Новая система очистки</p>
+      </div>
+      <hr class="hr-main">
+      <div class="news_item">
+        <img src="./../../../assets/pics/news.svg">
+        <p>Новость</p>
+      </div>
+    </div>
+    <div class="stocks">
+        <h4 class="text__main">Акции</h4>
+
+        <div class="slider">
+            <ngx-slick-carousel #slickModal="slick-carousel" [config]="slideConfig">
+                <div ngxSlickItem *ngFor="let sale of sales">
+                    <div class="slider_item"><img [src]="sale.pic" width="148px" height="148px"></div>
+                </div>
+            </ngx-slick-carousel>
+        </div>
+    </div>
+
+<!--      <div class="stocks">-->
+<!--        <h4 class="text__main">Акции</h4>-->
+<!--        <div class="slider">-->
+<!--          <div class="slider_item"><img src="./../../../assets/pics/news.svg" width="148px" height="148px"></div>-->
+<!--          <div class="slider_item"><img src="./../../../assets/pics/news.svg" width="148px" height="148px"></div>-->
+<!--          <div class="slider_item"><img src="./../../../assets/pics/news.svg" width="148px" height="148px"></div>-->
+<!--          <div class="slider_item"><img src="./../../../assets/pics/news.svg" width="148px" height="148px"></div>-->
+<!--          <div class="slider_item"><img src="./../../../assets/pics/news.svg" width="148px" height="148px"></div>-->
+<!--          <div class="slider_item"><img src="./../../../assets/pics/news.svg" width="148px" height="148px"></div>-->
+<!--          <div class="slider_item"><img src="./../../../assets/pics/news.svg" width="148px" height="148px"></div>-->
+<!--          <div class="slider_item"><img src="./../../../assets/pics/news.svg" width="148px" height="148px"></div>-->
+<!--          <div class="slider_item"><img src="./../../../assets/pics/news.svg" height="148px"></div>-->
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+</section>

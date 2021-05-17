@@ -1,0 +1,32 @@
+<div class="main">
+  <div class="container container-form">
+    <form [formGroup]='loginForm' (ngSubmit)="onSubmit()" style="width: 320px;">
+      <h3 class="text__main_1">Вход</h3>
+      <div class="inputs">
+        <div>
+          <div class="ots">
+            <input class="fields" type="email" formControlName="email" placeholder="Логин" >
+            <div>
+              <small style="color: red;" *ngIf="loginForm.get('email').errors && loginForm.get('email').touched">
+                Email обязателен</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="ots">
+          <input class="fields" formControlName="password" type="password" placeholder="Пароль">
+          <div>
+            <small style="color: red;" *ngIf="loginForm.get('password').errors && loginForm.get('password').touched">
+              Пароль обязателен </small>
+            <small style="color:red;"
+                   *ngIf="loginForm.get('password').hasError('passwordInvalid') && loginForm.get('password').touched">
+              Пароль не содержит цифр </small>
+          </div>
+        </div>
+
+        <button class="submit" [disabled]="!loginForm.valid" type="submit">Войти</button>
+        <p class="question">Нет аккаунта? <a [routerLink]="['','registration']" routerLinkActive="active"  class="redirect">Зарегистрироваться</a></p>
+      </div>
+    </form>
+  </div>
+</div>

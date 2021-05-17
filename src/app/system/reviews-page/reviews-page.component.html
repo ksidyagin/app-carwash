@@ -1,0 +1,58 @@
+<section class="main">
+  <div class="container">
+    <h3 class="text__main">Отзывы</h3>
+    <div class="rating rating_set">
+      <div class="rating-area">
+        <input type="radio" id="star-5" name="rating" value="5">
+        <label for="star-5" title="Оценка «5»"></label>	
+        <input type="radio" id="star-4" name="rating" value="4">
+        <label for="star-4" title="Оценка «4»"></label>    
+        <input type="radio" id="star-3" name="rating" value="3">
+        <label for="star-3" title="Оценка «3»"></label>  
+        <input type="radio" id="star-2" name="rating" value="2">
+        <label for="star-2" title="Оценка «2»"></label>    
+        <input type="radio" id="star-1" name="rating" value="1">
+        <label for="star-1" title="Оценка «1»"></label>
+      </div>
+      <p>Средний рейтинг</p>
+      <div class="rating__value">{{rating}}</div>
+    </div>
+
+
+    <div id="review1">
+      <div class="reviews__table">
+        <div class="reviews__table-top">
+          <p>Дата</p>
+          <p>Визит</p>
+          <p>Телефон</p>
+          <p>Комментарий</p>
+          <p>Рейтинг</p>
+        </div>
+        <div *ngFor="let review of reviews" class="reviews__table-cont">
+          <p>{{review.selected_time | date}}</p>
+          <p><img src="../images/reg-number.svg" alt=""></p>
+          <p>{{review.client_entry.phone}}</p>
+          <p>{{review.comment}}</p>
+          <p>
+              <img *ngIf="review.evaluation >= 1"  src="../../../assets/pics/reviews_star.svg" alt="">
+              <img *ngIf="review.evaluation >= 2" src="../../../assets/pics/reviews_star.svg" alt="">
+              <img *ngIf="review.evaluation >= 3" src="../../../assets/pics/reviews_star.svg" alt="">
+              <img *ngIf="review.evaluation >= 4" src="../../../assets/pics/reviews_star.svg" alt="">
+              <img *ngIf="review.evaluation >= 5" src="../../../assets/pics/reviews_star.svg" alt="">
+
+          </p>
+        </div>
+        <hr>
+       
+        
+    
+      </div>
+    </div>
+
+    <div class="reviews__tab-links">
+      <a href="#review1" class="reviews__tab-links-item link__tab-pages">1</a>
+      <a href="#review2" class="reviews__tab-links-item link__tab-pages">2</a>
+      <a href="#review3" class="reviews__tab-links-item link__tab-pages">3</a>
+    </div>
+  </div>
+</section>

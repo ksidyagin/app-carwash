@@ -1,0 +1,13 @@
+<section class="main">
+    <div class="container">
+        <h4 class="text__main">Выберите автомойку</h4>
+       <div *ngFor="let carwash of carwashes">
+           <div class="choose-carwash" (click)="selectCarwash(carwash.id)">
+               <!-- <img [src]="carwash.pic"> -->
+               <img src="../../../../../assets/images/Arrow.png">
+             {{carwash.name}}
+          </div>
+       </div>
+      
+    </div>
+</section>

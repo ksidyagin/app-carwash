@@ -1,0 +1,36 @@
+<div class="remains table__item" >
+  <div class="remains__nav-bar">
+    <a href="#" class="remains__nav-bar__link-active">Товары</a>
+    <a href="#" class="remains__nav-bar__link">Продукция</a>
+    <a href="#" class="remains__nav-bar__link">Запасы</a>
+  </div>
+
+  <div class="remains__info">
+    <p>Все склады</p>
+    <img src="../../../../assets/pics/Filter.svg">
+  </div>
+
+  <div class="remains__table">
+    <div class="remains__table-top">
+      <p>Имя</p>
+      <p>Склад</p>
+      <p>Остаток</p>
+      <p>Ед. изм.</p>
+    </div>
+
+        <div *ngFor="let product of products">
+          <div class="remains__table-cont">
+            <p>{{product.name}}</p>
+            <p>{{product.warehouse.name}} </p>
+            <p>{{product.count}}</p>
+            <p>{{product.measurement}}</p>
+          </div>
+        </div>
+          
+        
+
+        
+
+   
+  </div>
+</div>

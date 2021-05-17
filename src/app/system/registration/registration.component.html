@@ -1,0 +1,82 @@
+<div class="main">
+  <div class="container">
+    <div class="container-form">
+      <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()" style="width: 320px;">
+        <h3 class="text__main_1">Регистрация</h3>
+        <div class="inputs-reg">
+          <div>
+
+            <div class="ots">
+              <input class="fields" placeholder="Фамилия" formControlName="lastName">
+              <div>
+                <p class="form-error" *ngIf="registerForm.get('lastName').errors && registerForm.get('lastName').touched">
+                  Фамилия обязательно</p>
+              </div>
+
+            </div>
+
+            <div class="ots">
+              <input class="fields" formControlName="firstName" placeholder="Имя" >
+              <div>
+                <p class="form-error" *ngIf="registerForm.get('firstName').errors && registerForm.get('firstName').touched">
+                  Имя обязательно</p>
+              </div>
+
+            </div>
+
+            <div class="ots">
+              <input class="fields" formControlName="phone" appPhoneMask placeholder="Номер телефона" >
+              <div>
+                <p class="form-error" *ngIf="registerForm.get('phone').errors && registerForm.get('phone').touched">Введите телефон</p>
+              </div>
+            </div>
+
+            <div class="ots">
+              <input class="fields" placeholder="Город" formControlName="city">
+              <div>
+                <p class="form-error" *ngIf="registerForm.get('city').errors && registerForm.get('city').touched">Поле обязательно</p>
+              </div>
+            </div>
+
+            <div class="ots">
+              <input class="fields" type="email" formControlName="email" placeholder="Логин" >
+              <div>
+                <p class="form-error" *ngIf="registerForm.get('email').errors && registerForm.get('email').touched">
+                  Email обязательно  </p>
+                <p class="form-error" *ngIf="registerForm.get('email').hasError('forbiddenEmail')" >Такой Email уже существует!</p>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="ots">
+            <input class="fields" formControlName="password" type="password" placeholder="Пароль">
+            <div>
+              <p class="form-error" *ngIf="registerForm.get('password').errors && registerForm.get('password').touched">
+                Пароль обязателен </p>
+              <p class="form-error"
+                     *ngIf="registerForm.get('password').hasError('passwordInvalid') && registerForm.get('password').touched">
+                Пароль не содержит цифр </p>
+            </div>
+          </div>
+
+          <div class="ots">
+            <input class="fields" placeholder="Подтвердите пароль" type="password" formControlName="passwordConfirm">
+            <div>
+              <p class="form-error"
+                     *ngIf="registerForm.hasError('passwordsNotMatching') && registerForm.get('passwordConfirm').touched">Пароли не совпадают
+            </p>
+            </div>
+          </div>
+
+          <button  class="submit-reg" [disabled]="registerForm.invalid" type="submit">Зарегистрироваться</button>
+
+          <p class="question">Уже есть аккаунт? <a [routerLink]="['','login']" routerLinkActive="active" class="redirect">Войти</a></p>
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

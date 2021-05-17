@@ -1,0 +1,130 @@
+<section class="main lock-padding">
+  <div class="container">
+    <h4 class="text__main">Прайс-лист</h4>
+
+  <div class="price">
+    <div class="price__links">
+      <a class="price__link-active" [routerLink]="['','price-list-page', this.carwash.id]" routerLinkActive="active">Прайс-лист</a>
+      <a class="price__link" [routerLink]="['','nomenclature', this.carwash.id]" routerLinkActive="active">Номенклатура</a>
+      <a class="price__link" [routerLink]="['','warehouse', this.carwash.id,'leftovers']" routerLinkActive="active">Склад</a>
+      <a class="price__link" [routerLink]="['','analytics', this.carwash.id]" routerLinkActive="active">Аналитика</a>
+    </div>
+
+    <div class="price__info">
+      <p class="price__info-title">Автомойка  "{{carwash.name}}"</p>
+      <div class="price__info-img">
+        <a (click)="openFilter()" class="popup__link">
+          <img  class="img-filter" src="../../../../../../assets/pics/Filter.svg">
+        </a>
+        <a href="#service" class="popup__link">
+          <img class="img-add" src="../../../../../../assets/pics/Add.svg">
+        </a>
+      </div>
+    </div>
+
+    <div *ngFor="let category of categories; let index=index; trackBy: trackCategory;">
+
+      <div class="price__service">
+        <div class="price__service-top">
+          <p class="price__service-top-title">{{category.name}}</p>
+          <div class="price__service-top-img">
+            <img *ngIf="!this.settingsIsActive" (click)="openSettings()" class="img-set" src="../../../../../../assets/pics/settings.svg">
+            <img *ngIf="this.settingsIsActive" (click)="openSettings()" class="img-set-accept" src="../../../../../../assets/pics/Accept.svg">
+          </div>
+        </div>
+        <div *ngFor="let service of category.services; let i = index">
+          <div class="price__service-info">
+            <p>{{service.description}}</p>
+            <span>{{service.price}} ₽
+              <img *ngIf="this.settingsIsActive" (click)="removeService(service.id)" class="img-remove"  src="./../../../assets/pics/RemoveItem.svg">
+            </span>
+          </div>
+        </div>
+
+        <a (click)="openServiceForm(category)" class="price__service-btn popup__link">Добавить услугу в категорию
+          “{{category.name}}”</a>
+
+        <!----Popup---->
+      <div *ngIf="serviceFormIsOpen" class="popup lock-padding">
+        <div class="container">
+            <form [formGroup]="serviceForm" (ngSubmit)="createService()" class="popup__content">
+                <h4 class="text__main">Добавить сервис</h4>
+                <h6 class="subText">Пожалуйста, введите название сервиса</h6>
+                <input formControlName="description" class="text-input" type="text" placeholder="Введите значение...">
+                <p style="color: red;" *ngIf="serviceForm.get('description').errors && serviceForm.get('description').touched">
+                  Данное поле обязательно!
+                  </p>
+                <h6 class="subText">Пожалуйста, введите стоимость сервиса</h6>
+                <input formControlName="price" class="text-input" type="text" placeholder="Введите значение...">
+                <p style="color: red;" *ngIf="serviceForm.get('price').errors && serviceForm.get('price').touched">
+                  Данное поле обязательно!
+                  </p>
+                <div class="popup__btns">
+                  <button class="btn-sbm" [disabled]="serviceForm.invalid" type="submit" >Сохранить</button>
+                    <a (click)="closeServiceForm()" class="btn-cnl close-popup">Отменить</a>
+                </div>
+              </form>
+        </div>
+    </div>
+          <!----Popup---->
+      </div>
+
+    </div>
+
+
+  </div>
+
+    <div class="container-main">
+      <a href="#">
+        <div class="price-btn">
+          <p>Скачать в .xls</p>
+        </div>
+      </a>
+      <a>
+        <div (click)="openCategoryForm()" class="price-btn" style="background-color: #FC6441;">
+          <p>Добавить категорию</p>
+        </div>
+      </a>
+    </div>
+
+      <!--Popups-->
+    <div *ngIf="filterIsOpen" id="filter" class="popup lock-padding">
+      <div class="container">
+          <div class="popup__content">
+              <h4 class="text__main">Фильтр</h4>
+              <h6 class="subText">Пожалуйста, выберите из списка</h6>
+              <input class="text-input" type="text" placeholder="Введите значение...">
+              <div class="popup__btns">
+                  <input class="btn-sbm" type="button" value="Сохранить">
+                  <a (click)="closeFilter()" class="btn-cnl close-popup">Отменить</a>
+              </div>
+              <div class="filter-set">
+                  <p>Шиномотнаж <img src="../../../../assets/pics/RemoveItem.svg"></p>
+                  <p>Кафе<img src="../../../../assets/pics/RemoveItem.svg"></p>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div *ngIf="categoryFormIsOpen" class="popup lock-padding">
+    <div class="container">
+        <form [formGroup]="categoryForm" (ngSubmit)="createCategory()" class="popup__content">
+            <h4 class="text__main">Добавить категорию услуг</h4>
+            <h5 class="subText">Пожалуйста, введите название категории</h5>
+            <input formControlName="name" class="text-input" type="text" placeholder="Введите значение...">
+            <p style="color: red;" *ngIf="categoryForm.get('name').errors && categoryForm.get('name').touched">
+            Данное поле обязательно!
+            </p>
+            <div class="popup__btns">
+                <button class="btn-sbm" [disabled]="categoryForm.invalid" type="submit" >Сохранить</button>
+                <a (click)="closeCategoryForm()" class="btn-cnl close-popup">Отменить</a>
+            </div>
+          </form>
+    </div>
+</div>
+
+
+  </div>
+
+
+</section>

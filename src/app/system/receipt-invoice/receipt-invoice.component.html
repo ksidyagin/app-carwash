@@ -1,0 +1,120 @@
+<section class="main">
+  <form [formGroup]="receiptForm" (ngSubmit)="createReceipt()" class="container">
+    <h3 class="text__main">Приходная накладная</h3>
+    <div class="receipt__point">
+      <div class="receipt__point-top">
+        <p class="receipt__point-title">Поставщик</p>
+      </div>
+      <div class="receipt__point-bottom">
+        <p  class="receipt__point-text">
+          <input style="width:250px; border: none;" formControlName="provider" type="text" placeholder="Выбрать поставщика...">
+        </p>
+      </div>
+    </div>
+
+    <div class="receipt__point">
+      <div class="receipt__point-top">
+        <p class="receipt__point-title">Комментарий</p>
+      </div>
+      <div class="receipt__point-bottom">
+        <p  class="receipt__point-text">
+          <input style="width:250px; border: none;" formControlName="comment" type="text" placeholder="Комментарий к документу">
+        </p>
+      </div>
+    </div>
+
+    <div class="receipt__point">
+      <div class="receipt__point-top">
+        <p class="receipt__point-title">Входящий номер</p>
+      </div>
+      <div class="receipt__point-bottom">
+        <p class="receipt__point-text" >
+          <input style="width:250px; border: none;" formControlName="incoming_number" placeholder="Входящий номер (не обязательно)">
+        </p>
+      </div>
+    </div>
+
+    <div class="receipt__point">
+      <div class="receipt__point-top">
+        <p class="receipt__point-title">Оприходовать на склад</p>
+      </div>
+      <div class="spoiler__btn">
+        <select formControlName="warehouse_entry">
+          <option *ngFor="let whouse of warehouses" [ngValue]="whouse">
+            {{whouse.name}}
+          </option>
+        </select>
+      </div>
+     
+    </div>
+
+    <div class="receipt__point">
+      <div class="receipt__point-top">
+        <p class="receipt__point-title">Дата получения товара</p>
+      </div>
+      <div class="spoiler__btn">
+        <input style="width:250px; border: none;" type="date" formControlName="date" class="receipt__point-text top-text">
+      </div>
+      
+    </div>
+    <div class="receipt__point">
+      <div class="receipt__point-top">
+        <p class="receipt__point-title">Имя товара</p>
+      </div>
+      <div class="receipt__point-bottom">
+        <input style="width:250px; border: none;" type="text" formControlName="name_product" class="receipt__point-text" placeholder="Введите...">
+      </div>
+    </div>
+
+    <div class="receipt__point">
+      <div class="receipt__point-top">
+        <p class="receipt__point-title">Фасовка</p>
+      </div>
+      <div class="spoiler__btn">
+        <input style="width:250px; border: none;" type="text" formControlName="packaging" class="receipt__point-text" placeholder="Введите...">
+      </div>
+      
+    </div>
+
+    <div class="receipt__point">
+      <div class="receipt__point-top">
+        <p class="receipt__point-title">Кол-во</p>
+      </div>
+      <div class="receipt__point-bottom">
+        <input style="width:250px; border: none;" type="text" formControlName="count" class="receipt__point-text" placeholder="0">
+
+      </div>
+    </div>
+
+    <div class="receipt__point">
+      <div class="receipt__point-top">
+        <p class="receipt__point-title">Цена</p>
+      </div>
+      <div class="receipt__point-bottom">
+        <p class="receipt__point-text">
+          <input style="width:250px; border: none;" type="text" 
+          formControlName="price"  placeholder="Цена за единицу...">
+        </p>
+       
+      </div>
+    </div>
+
+    <div class="receipt__point">
+      <div class="receipt__point-top">
+        <p class="receipt__point-title">Сумма</p>
+      </div>
+      <div class="receipt__point-bottom">
+        <p class="receipt__point-text">
+          <input style="width:250px; border: none;" type="text" 
+          formControlName="sum"  placeholder="Сумма">  
+        </p>
+        
+      </div>
+    </div>
+
+    <div class="receipt__btns">
+      <button class="btn-sbm" [disabled]="receiptForm.invalid"  type="submit">Провести</button>
+      <a class="btn-cnl" [routerLink]="['','warehouse',carwash.id,'leftovers']" routerLinkActive="active">Назад</a>
+    </div>
+  </form>
+</section>
